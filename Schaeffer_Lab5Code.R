@@ -59,9 +59,27 @@ final_df <- final_df %>%
 bounded_count = final_df %>%
   count(artist, description)
 
-
+write.csv(bounded_count, file = "bounded_count.csv", row.names = FALSE)
 class(bounded_count)
 
+
+# Assuming your dataframe is named bounded_count
+library(ggplot2)
+
+### Creating a plot to compare Allentown's value for each artist
+### Can compare what artists have the most values within vs out of range
+descript_plot = ggplot(bounded_count, aes(x = artist, y = n, fill = description)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Allentown Data Comparison per Artist",
+       x = "Artist",
+       y = "Number of Songs",
+       fill = "Description") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+ggsave("descript_plot.pdf", plot = descript_plot, width = 6, height = 4)
+
+descript_plot
 
 view(bounded_count)
 

@@ -90,12 +90,14 @@
 
 \begin{multicols}{2}
 \begin{abstract}
-This lab focused on using \texttt{R} code to manipulate a folder of music from varying artists and albums into executable lines of code for future purpose. These methods allow the important information from each respective file to be extracted in order to simplify future usage of the song files. The files can then be extracted for information that provides insight into descriptors of each songs.
+This lab focused on using \texttt{R} code to procure data about various songs for analysis. Additionally, the lab focused on skills producing plots and tables to assist with interpretation.
 \end{abstract}
 
-\noindent \textbf{Keywords:} Lists; Objects in R, For Loops, Coding Structures
+\noindent \textbf{Keywords:} Lists; Objects in R, Coding Structures, Graphs, Tables
 
 \section{Introduction}
+This lab is focused on the song Allentown, a song released by The Front Bottoms and Manchester Orchestra (and also with additional writing credit to All Get Out). The main question of the lab is determining which artist had the greatest influence on Allentown. To do so, several data processing tools were used. These include Essentia for song analysis and a language analysis tool called LIWC, which utilized JSONLite to manipulate the data in \texttt{R} \citep{essentia} \citep{jsonlite}.
+
 This lab stems from determining what qualities or data about music makes up the total sound,specifically posed by the question of what artist had the greatest influence on the song Allentown. To do so, Essentia can be used to process the data from the songs and determine the characteristics of each individual song \citep{essentia}. Our goal so far through lab has been to prepare executable lines of code that will produce expansive information on each song. Next, this information can be cleaned to prepare for isolating Allentown and comparing it to other songs to determine what artist had the most influence.
 
 
@@ -108,18 +110,21 @@ Our goals for week 2 consisted of an introduction in acquiring specific pieces f
 \section{Results}
 The results of this lab bring us very close to our desired goal of analyzing Allentown to determine what artist had the greater influence on the song. In our initial data compilation during week one, the acquired command lines made it easier to collect information on each song. Now, we have all of the information that is required for each song that will allow insight into Allentown specifically. Now that the information has been successfully pulled together into the dataframe, there is data on the technical construction of the music, the atmosphere or mood each song exhibits, and both technical and practical information considering the lyrical construction. Looking forward for completing the future tasks on this lab, the data will be analyzed in order to come to conclusions on Allentown's composition and other insight that can be gained from the data we collected this week.
 
+\begin{figure}[H]
+ \begin{center}
+ \includegraphics[scale=0.65]{descript_plot.pdf}
+ \caption{A comparison of Allentown's data to each artist}
+ \label{plot3}
+ \end{center}
+ \end{figure}
 
 
 
 
 
-\begin{kframe}
-\begin{alltt}
- \hlkwd{print}\hldef{(count.table,}
-  \hlkwc{table.placement}\hldef{=}\hlsng{"H"}\hldef{,}\hlkwc{include.rownames}\hldef{=}\hlnum{FALSE}\hldef{,}\hlkwc{size}\hldef{=}\hlsng{"small"}\hldef{)}
-\end{alltt}
-\end{kframe}% latex table generated in R 4.4.2 by xtable 1.8-4 package
-% Tue Feb 25 10:36:11 2025
+
+% latex table generated in R 4.4.2 by xtable 1.8-4 package
+% Tue Feb 25 11:57:26 2025
 \begin{table}[H]
 \centering
 \begingroup\small
@@ -141,6 +146,9 @@ All Get Out & Out of Range &  22 \\
 \endgroup
 \label{count.tab}
 \end{table}
+
+
+
 
 
 
