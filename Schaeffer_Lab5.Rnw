@@ -68,7 +68,7 @@ print(count.table,
       table.placement="H", include.rownames=FALSE, size="small")
 @
 
-The results provide helpful information to compare Allentown to the other artists. Unlike the more complicated information, this table provides a far more understandable group of information that shows that Allentown tends to align more closely to certain artists. An even better way to compare the values of each artist can be done with the following plot:
+The results provide helpful information to compare Allentown to the other artists. Unlike the more complicated information, this table provides a far more understandable group of information that shows that Allentown tends to align closer to certain artists. An even better way to compare the values of each artist can be done with the following plot:
 
 \begin{figure}[H]
  \begin{center}
