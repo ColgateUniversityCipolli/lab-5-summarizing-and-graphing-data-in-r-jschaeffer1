@@ -60,10 +60,7 @@ bounded_count = final_df %>%
   count(artist, description)
 
 write.csv(bounded_count, file = "bounded_count.csv", row.names = FALSE)
-class(bounded_count)
 
-
-# Assuming your dataframe is named bounded_count
 library(ggplot2)
 
 ### Creating a plot to compare Allentown's value for each artist
@@ -77,14 +74,10 @@ descript_plot = ggplot(bounded_count, aes(x = artist, y = n, fill = description)
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
+#Saving the plot to be used in Sweave
 ggsave("descript_plot.pdf", plot = descript_plot, width = 6, height = 4)
 
-descript_plot
 
-view(bounded_count)
-
-view(artists)
-view(final_df)
 
 
 

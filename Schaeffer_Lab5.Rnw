@@ -45,19 +45,30 @@ This lab focused on using \texttt{R} code to procure data about various songs fo
 \noindent \textbf{Keywords:} Lists; Objects in R, Coding Structures, Graphs, Tables
 
 \section{Introduction}
-This lab is focused on the song Allentown, a song released by The Front Bottoms and Manchester Orchestra (and also with additional writing credit to All Get Out). The main question of the lab is determining which artist had the greatest influence on Allentown. To do so, several data processing tools were used. These include Essentia for song analysis and a language analysis tool called LIWC, which utilized JSONLite to manipulate the data in \texttt{R} \citep{essentia} \citep{jsonlite}.In the rest of this report, I will explain how these tools produced helpful data and how this data was analyzed to obtain a proposed answer to what artist most influenced Allentown.
+This lab is focused on the song Allentown, a song released by The Front Bottoms and Manchester Orchestra (and also with additional writing credit to All Get Out). The main question of the lab is determining which artist had the greatest influence on Allentown. To do so, several data processing tools were used. These include Essentia for song analysis and a language analysis tool called LIWC, which utilized \texttt{jsonlite} to manipulate the data in \texttt{R} \citep{essentia} \citep{jsonlite}.In the rest of this report, I will explain how these tools produced helpful data and how this data was analyzed to obtain a proposed answer to what artist most influenced Allentown.
 
 \section{Methods}
 
-A majority of the work that went into the lab was focused on acquiring data for future analysis of each artist and the song Allentown. 
-
-The brunt of the work done to prepare each song into an executable line of code was handled using various functions in the \texttt{stringr} package to manipulate character names of the file for our desired result \citep{stringr}. To make sure this was done accurately for ever track within a set of given music, two separate for loops were required. \texttt{stringr} was used to determine what folders in a given directory correspond to music albums, and within each song of the album various usage of \texttt{stringr} functions allowed names to be combined for our desired result. Once this manipulation was complete, each iteration ended with the executable line being appended onto a vector that contained each completed line of code.
-
-\subsection{Week 2}
-Our goals for week 2 consisted of an introduction in acquiring specific pieces from a list in \texttt{R}. A JSON file was loaded into \texttt{R} using \texttt{jsonlite}, and various objects were created to correspond to the average loudness, key, mean of spectral energy, danceability, bpm, key scale, and length \citep{jsonlite}. Using a dataframe, this information can all be compiled together for each song in an easy to read format. Form here, additional data was collected for each song. Essentia models were sifted to collect additional information on the differing mood values of each song. Finally, additional data was added to the dataframe that included analysis on the lyrics of each song. Once every song properly contained the information, we had a singular dataframe with every song containing the desired characteristics of the music. Finally, separate \texttt{.csv} files were made. In one file we included only the information for Allentown, and in the other file we included every other song. 
+A majority of the work that went into the lab was focused on acquiring data for future analysis of each artist and the song Allentown. The package \texttt{stringr} was very helpful for taking our song files and prepping them for data extraction \citep{stringr}. The data was then collected through JSON files loaded by \texttt{jsonlite} as well as Essentia \citep{jsonlite} \citep{essentia}. The last set of information included lyrical analysis through LIWC. Once the data was collected, information on Allentown was compared to each song written by the three specified artists to determine what parameters were out of the standard range of each artist. \texttt{xtable} and \texttt{ggplot} were used to form the table and plot featured below for analysis. These were the main resources used to make interpretations on what artist had the greatest influence on Allentown \citep{xtable} \citep{ggplot2}.
 
 \section{Results}
-The results of this lab bring us very close to our desired goal of analyzing Allentown to determine what artist had the greater influence on the song. In our initial data compilation during week one, the acquired command lines made it easier to collect information on each song. Now, we have all of the information that is required for each song that will allow insight into Allentown specifically. Now that the information has been successfully pulled together into the dataframe, there is data on the technical construction of the music, the atmosphere or mood each song exhibits, and both technical and practical information considering the lyrical construction. Looking forward for completing the future tasks on this lab, the data will be analyzed in order to come to conclusions on Allentown's composition and other insight that can be gained from the data we collected this week.
+The initial result from our lab was an extensive list of information that would be extremely difficult to analyze as it consisted of over 100 different qualities and their values for each song. Using a summary of information for each artist, the code produced results for Allentown and whether it remained within the bounds of each artist for various features. The data was counted and produced the following table detailing the number of times Allentown exhibited qualities that were outside the bounds of each artist.
+<<load_bounded_count, echo=FALSE, results=FALSE, message=FALSE, warning=FALSE>>=
+source("Schaeffer_Lab5Code.R") # This pulls in your table (bounded_count)
+@
+
+<<size='scriptsize', echo=FALSE, results=FALSE, message = FALSE, warning = FALSE>>=
+library(xtable)
+colnames(bounded_count) <- c("Artist", "Description", "Count")
+count.table <- xtable(bounded_count, label="count.tab", caption="Count of Allentown in Comparison to Each Artist")
+@
+
+<<echo=FALSE, results="asis">>=
+print(count.table,
+      table.placement="H", include.rownames=FALSE, size="small")
+@
+
+The results provide helpful information to compare Allentown to the other artists. Unlike the more complicated information, this table provides a far more understandable group of information that shows that Allentown tends to align more closely to certain artists. An even better way to compare the values of each artist can be done with the following plot:
 
 \begin{figure}[H]
  \begin{center}
@@ -67,25 +78,10 @@ The results of this lab bring us very close to our desired goal of analyzing All
  \end{center}
  \end{figure}
 
+This plot shows important comparison among each artist. Values within range, specified in blue, generally demonstrates ways that Allentown is similar to that artist. Values for outlying and out of range shows how Allentown is different from that artist, potentially signifying ways that it was influenced less by that artist.
 
-<<load_bounded_count, echo=FALSE, results=FALSE, message=FALSE, warning=FALSE>>=
-source("Schaeffer_Lab5Code.R") #I was suggested to use this to pull in my table value
-@
-
-<<size='scriptsize', echo=FALSE, results=FALSE, message = FALSE, warning = FALSE>>=
- library(xtable)
- colnames(bounded_count)<-c("Artist","Description","Count")
- count.table<-xtable(bounded_count,label="count.tab") #Now able to reference table
-@
-
-<<echo=FALSE, results="asis">>=
- print(count.table,
-  table.placement="H",include.rownames=FALSE,size="small")
-@
-
-
-
-
+\section{Discussion}
+From the results we acquired during the lab, it would seem that Allentown aligns closely with each of the three artist but has the most similarities to Manchester Orchestra's music. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography
