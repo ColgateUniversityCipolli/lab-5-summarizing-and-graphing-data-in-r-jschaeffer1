@@ -81,15 +81,15 @@ The results provide helpful information to compare Allentown to the other artist
 This plot shows important comparison among each artist. Values within range, specified in blue, generally demonstrates ways that Allentown is similar to that artist. Values for outlying and out of range shows how Allentown is different from that artist, potentially signifying ways that it was influenced less by that artist.
 
 \section{Discussion}
-From the results we acquired during the lab, it would seem that Allentown aligns closely with each of the three artist but has the most similarities to Manchester Orchestra's music. 
+From the results we acquired during the lab, it would seem that Allentown aligns closely with each of the three artist but has the most similarities to Manchester Orchestra's music. For most features, Allentown is within the standard range of each of the three artists, but there are significant fewer features that are outlying or out of range compared to Manchester Orchestra. It is understandable that All Get Out would not bear the largest similarity as they were not a performing artist for Allentown. This answers the question that Manchester Orchestra had the largest influence on the creation of Allentown. 
+
+An interesting finding from the data, however, is how closely Allentown related to each of the three artists. Due to the nature of song variety, it would be interesting to see if this trend is present in most artists, not just those that contributed to the song. This shows that Allentown was closely related to all three of its contributing artists, and they combined their styles together in a way that ensured Allentown was a blend of all three bands. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \vspace{2em}
 
-\noindent\textbf{Bibliography:} Note that when you add citations to your bib.bib file \emph{and}
-you cite them in your document, the bibliography section will automatically populate here.
 
 \begin{tiny}
 \bibliography{bib}
