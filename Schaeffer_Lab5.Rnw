@@ -1,0 +1,95 @@
+\documentclass{article}
+\usepackage{amsmath} %This allows me to use the align functionality.
+                     %If you find yourself trying to replicate
+                     %something you found online, ensure you're
+                     %loading the necessary packages!
+\usepackage{amsfonts}%Math font
+\usepackage{graphicx}%For including graphics
+\usepackage{hyperref}%For Hyperlinks
+\usepackage[shortlabels]{enumitem}% For enumerated lists with labels specified
+                                  % We had to run tlmgr_install("enumitem") in R
+\hypersetup{colorlinks = true,citecolor=black} %set citations to have black (not green) color
+\usepackage{natbib}        %For the bibliography
+\setlength{\bibsep}{0pt plus 0.3ex}
+\bibliographystyle{apalike}%For the bibliography
+\usepackage[margin=0.50in]{geometry}
+\usepackage{float}
+\usepackage{multicol}
+
+%fix for figures
+\usepackage{caption}
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+\begin{document}
+
+\vspace{-1in}
+\title{Lab 02 -- MATH 240 -- Computational Statistics}
+
+\author{
+  Jack Schaeffer \\
+  Professor Cipolli \\
+  MATH 240 \\
+  {\tt jschaeffer@colgate.edu}
+}
+
+\date{}
+
+\maketitle
+
+\begin{multicols}{2}
+\begin{abstract}
+This lab focused on using \texttt{R} code to manipulate a folder of music from varying artists and albums into executable lines of code for future purpose. These methods allow the important information from each respective file to be extracted in order to simplify future usage of the song files. The files can then be extracted for information that provides insight into descriptors of each songs.
+\end{abstract}
+
+\noindent \textbf{Keywords:} Lists; Objects in R, For Loops, Coding Structures
+
+\section{Introduction}
+This lab stems from determining what qualities or data about music makes up the total sound,specifically posed by the question of what artist had the greatest influence on the song Allentown. To do so, Essentia can be used to process the data from the songs and determine the characteristics of each individual song \citep{essentia}. Our goal so far through lab has been to prepare executable lines of code that will produce expansive information on each song. Next, this information can be cleaned to prepare for isolating Allentown and comparing it to other songs to determine what artist had the most influence.
+
+
+\section{Methods}
+The brunt of the work done to prepare each song into an executable line of code was handled using various functions in the \texttt{stringr} package to manipulate character names of the file for our desired result \citep{stringr}. To make sure this was done accurately for ever track within a set of given music, two separate for loops were required. \texttt{stringr} was used to determine what folders in a given directory correspond to music albums, and within each song of the album various usage of \texttt{stringr} functions allowed names to be combined for our desired result. Once this manipulation was complete, each iteration ended with the executable line being appended onto a vector that contained each completed line of code.
+
+\subsection{Week 2}
+Our goals for week 2 consisted of an introduction in acquiring specific pieces from a list in \texttt{R}. A JSON file was loaded into \texttt{R} using \texttt{jsonlite}, and various objects were created to correspond to the average loudness, key, mean of spectral energy, danceability, bpm, key scale, and length \citep{jsonlite}. Using a dataframe, this information can all be compiled together for each song in an easy to read format. Form here, additional data was collected for each song. Essentia models were sifted to collect additional information on the differing mood values of each song. Finally, additional data was added to the dataframe that included analysis on the lyrics of each song. Once every song properly contained the information, we had a singular dataframe with every song containing the desired characteristics of the music. Finally, separate \texttt{.csv} files were made. In one file we included only the information for Allentown, and in the other file we included every other song. 
+
+\section{Results}
+The results of this lab bring us very close to our desired goal of analyzing Allentown to determine what artist had the greater influence on the song. In our initial data compilation during week one, the acquired command lines made it easier to collect information on each song. Now, we have all of the information that is required for each song that will allow insight into Allentown specifically. Now that the information has been successfully pulled together into the dataframe, there is data on the technical construction of the music, the atmosphere or mood each song exhibits, and both technical and practical information considering the lyrical construction. Looking forward for completing the future tasks on this lab, the data will be analyzed in order to come to conclusions on Allentown's composition and other insight that can be gained from the data we collected this week.
+
+
+<<load_bounded_count, echo=FALSE, results=FALSE, message=FALSE, warning=FALSE>>=
+source("Schaeffer_Lab5Code.R") #I was suggested to use this to pull in my table value
+@
+
+<<size='scriptsize', echo=FALSE, results=FALSE, message = FALSE, warning = FALSE>>=
+ library(xtable)
+ colnames(bounded_count)<-c("Artist","Description","Count")
+ count.table<-xtable(bounded_count,label="count.tab") #Now able to reference table
+@
+
+<<echo=FALSE, results="asis">>=
+ print(count.table,
+  table.placement="H",include.rownames=FALSE,size="small")
+@
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{2em}
+
+\noindent\textbf{Bibliography:} Note that when you add citations to your bib.bib file \emph{and}
+you cite them in your document, the bibliography section will automatically populate here.
+
+\begin{tiny}
+\bibliography{bib}
+\end{tiny}
+\end{multicols}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Appendix
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}

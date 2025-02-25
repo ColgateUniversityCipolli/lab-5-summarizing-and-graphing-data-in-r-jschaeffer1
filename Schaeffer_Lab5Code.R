@@ -5,6 +5,7 @@
 library(stringr)
 library(tidyverse)
 library(jsonlite)
+library(xtable)
 
 ###Loading data files
 artists = read.csv("data/essentia.data.csv")
@@ -54,10 +55,15 @@ final_df <- final_df %>%
 ############################################################################
 ##########              STEP TWO: Analyzing the Data              ##########
 ############################################################################
+###Tallying up how many times Allentown is within bounds for each artist
+bounded_count = final_df %>%
+  count(artist, description)
 
 
+class(bounded_count)
 
 
+view(bounded_count)
 
 view(artists)
 view(final_df)
